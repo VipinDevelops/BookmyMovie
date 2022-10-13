@@ -16,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/itsvipindev/BookmyMovie/issues"
   },
-  "homepage": "https://github.com/itsvipindev/BookmyMovie#readme"
+  "homepage": "https://github.com/itsvipindev/BookmyMovie#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^6.6.5"
+  }
 }

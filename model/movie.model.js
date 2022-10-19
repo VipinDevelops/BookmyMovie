@@ -6,6 +6,14 @@ const movieSchema = Schema({
         required:true,
         type:String
     },
+    genre:{
+        required:true,
+        type:String
+    },
+    actor:{
+        required:false,
+        type:String
+    }
     //imageurl , actor
 })
 

@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyparser = require('body-parser')
 const MovieRoutes  = require('./routes/movie.routes')
-const errorController = require('./controllers/errors')
+const errorController = require('./controllers/errors.controlller')
 
 //Database 
 require('./database/db');
@@ -23,7 +23,7 @@ app.use(cors())
 //parsing request body's
 app.use(bodyparser.urlencoded({extended:false}))
 
-app.use('/api',MovieRoutes)
+app.use('/movie',MovieRoutes)
 
 //default response by server 
 app.get('/',(req,res)=>{

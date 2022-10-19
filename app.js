@@ -1,10 +1,11 @@
 const express = require('express');
 const bodyparser = require('body-parser')
-const MovieModel = require('./model/movies');
-const MovieRoutes  = require('./routes/movieroutes')
+const MovieRoutes  = require('./routes/movie.routes')
 const errorController = require('./controllers/errors')
+
 //Database 
 require('./database/db');
+
 //ENV
 require('dotenv').config()
 var PORT = process.env.PORT;
@@ -15,7 +16,7 @@ const app = express();
 // handle JSON req and response 
 app.use(express.json());
 
-//solving cors error 
+//solve cors error 
 const cors = require('cors');
 app.use(cors())
 
@@ -27,7 +28,7 @@ app.use('/api',MovieRoutes)
 //default response by server 
 app.get('/',(req,res)=>{
     res.send('my express server is now Runing ');
-    console.log('Server is now running');
+    console.log('my express server is now Runing ');
 })
 
 

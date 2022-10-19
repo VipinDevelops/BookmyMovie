@@ -26,13 +26,12 @@ app.use(bodyparser.urlencoded({extended:false}))
 app.use('/movie',MovieRoutes)
 
 //default response by server 
-app.get('/',(req,res)=>{
+app.use('/',(req,res)=>{
     res.send('Welcome to my REST API ');
-    console.log('API is Started ');
+    console.log('API is UP and Working ');
 })
 
-
-
+//Error handler
 app.use(errorController.get404)
 
 //server start listening 

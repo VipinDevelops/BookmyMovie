@@ -51,10 +51,8 @@ module.exports ={
                 const id = req.params.id;
                 const DeletedMoive = await Movie.findByIdAndDelete(id)
                 res.send(` ${DeletedMoive.name} Movie has been deleted`)
-                
             } catch (error) {
                 res.status(400).json({message:error.message})
-                
             }
         }
 

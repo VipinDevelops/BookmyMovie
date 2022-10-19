@@ -1,15 +1,18 @@
 const express = require('express');
 const bodyparser = require('body-parser')
-
 const MovieModel = require('./model/movies');
-
+const MovieRoutes  = require('./routes/movieroutes')
+const errorController = require('./controllers/errors')
 //Database 
-require('./Database/DB');
+require('./database/db');
+//ENV
+require('dotenv').config()
+var PORT = process.env.PORT;
 
 //initializing express app 
 const app = express();
 
-//mongo db handle JSON req and response 
+// handle JSON req and response 
 app.use(express.json());
 
 //solving cors error 
@@ -19,14 +22,19 @@ app.use(cors())
 //parsing request body's
 app.use(bodyparser.urlencoded({extended:false}))
 
+app.use('/api',MovieRoutes)
+
 //default response by server 
-app.use('/',(req,res)=>{
+app.get('/',(req,res)=>{
     res.send('my express server is now Runing ');
     console.log('Server is now running');
 })
 
 
+
+app.use(errorController.get404)
+
 //server start listening 
-app.listen(3000,()=>{
-    console.log('Server is now listening');
+app.listen(PORT,()=>{
+    console.log(`Server is now listening on PORT ${PORT}..... `);
 });

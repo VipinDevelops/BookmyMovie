@@ -1,7 +1,15 @@
 const mongoose = require('mongoose');
 
+/**
+ * @typedef {Schema} MoviesSchema
+ * @property {String} name
+ */
 const MoviesSchema = mongoose.Schema({
-    name:String,
+    name:{
+        required:true,
+        type:String
+    },
+
 })
 
 const MovieModel = mongoose.model('movies',MoviesSchema);

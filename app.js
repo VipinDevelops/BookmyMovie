@@ -27,8 +27,8 @@ app.use('/api',MovieRoutes)
 
 //default response by server 
 app.get('/',(req,res)=>{
-    res.send('my express server is now Runing ');
-    console.log('my express server is now Runing ');
+    res.send('Welcome to my REST API ');
+    console.log('API is Started ');
 })
 
 
@@ -37,5 +37,5 @@ app.use(errorController.get404)
 
 //server start listening 
 app.listen(PORT,()=>{
-    console.log(`Server is now listening on PORT ${PORT}..... `);
+    console.log(`Server is now listening on PORT ${PORT} ..... `);
 });

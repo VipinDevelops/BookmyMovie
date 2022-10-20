@@ -1,6 +1,17 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+
+/**
+ * Represents a Movie JSON
+   * @constructor
+   * @param {name} name - The name of the moive.
+   * @param {string} genre - The genre of the moive.
+   * @param {string} actor - The actor in the moive.
+   * @param {string} language - The language of the moive.
+   * @param {String} dateRelease - The dateRelease of the moive.
+   * @param {boolean} booked - Whether the moive is booked or not.
+ */
 const movieSchema = Schema({
     name:{
         required:true,

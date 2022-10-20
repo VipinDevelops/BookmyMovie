@@ -4,7 +4,6 @@ const movieRoutes = require('./routes/movie.routes');
 const authRoutes = require('./routes/auth.routes');
 const errorController = require('./controllers/errors.controlller');
 const cors = require('cors');
-require('dotenv').config();
 const app = express();
 
 // Database

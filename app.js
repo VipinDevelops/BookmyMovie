@@ -4,7 +4,7 @@ const movieRoutes = require('./routes/movie.routes');
 const authRoutes = require('./routes/auth.routes');
 const errorController = require('./controllers/errors.controlller');
 const cors = require('cors');
-const PORT = process.env.PORT;
+require('dotenv').config();
 const app = express();
 
 // Database
@@ -25,15 +25,13 @@ app.use(bodyparser.urlencoded({extended: false}));
 //   console.log('API is UP and Working ');
 // });
 
-// importing user
-app.use('/', authRoutes);
-
-// Movie Routes
 app.use('/movie', movieRoutes);
+app.use('/auth', authRoutes);
 
 // Error handler
 app.use(errorController.get404);
 
+const PORT = process.env.PORT || 3000;
 // server start listening
 app.listen(PORT, () => {
   console.log(`Server is now listening on PORT ${PORT} ..... `);

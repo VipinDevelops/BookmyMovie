@@ -2,30 +2,41 @@ const express = require('express');
 
 // eslint-disable-next-line new-cap
 const router = express.Router();
-const isAuth = require('../middlewares/is-auth');
 // eslint-disable-next-line no-unused-vars
 const {mongoose} = require('../config/db');
 const movieController = require('../controllers/movie.controller');
-
+const verifyToken = require('../middlewares/VerifyToken');
 // Post
-router.post('/post', isAuth, movieController.PostMovie);
+router.post('/post', verifyToken.verifyToken, movieController.PostMovie);
 
 // Get all
-router.get('/getall', isAuth, movieController.GetAllMovie);
+router.get('/getall', verifyToken.verifyToken, movieController.GetAllMovie);
 
 // Get One
-router.get('/getone/:id', isAuth, movieController.GetOneMovie);
+router.get('/getone/:id', verifyToken.verifyToken, movieController.GetOneMovie);
 
 // Update by ID
-router.patch('/update/:id', isAuth, movieController.UpdateMovie);
+router.patch(
+    '/update/:id',
+    verifyToken.verifyToken,
+    movieController.UpdateMovie,
+);
 
 // Update Movie to booked by ID
-router.patch('/book/:id', isAuth, movieController.Bookmovie);
+router.patch('/book/:id', verifyToken.verifyToken, movieController.Bookmovie);
 
 // Update Movie to booked by ID
-router.patch('/cancel/:id', isAuth, movieController.Cancelmovie);
+router.patch(
+    '/cancel/:id',
+    verifyToken.verifyToken,
+    movieController.Cancelmovie,
+);
 
 // Delete by ID
-router.delete('/delete/:id', isAuth, movieController.DeleteMovie);
+router.delete(
+    '/delete/:id',
+    verifyToken.verifyToken,
+    movieController.DeleteMovie,
+);
 
 module.exports = router;

@@ -1,70 +1,67 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
 const User = require('../model/user.model');
-const keys = process.env.TOKEN_SECRET_KEY;
+const config = require('../config/config'); // get config file
 
-module.exports.signup = (req, res, next) => {
-  const email = req.body.email;
-  const password = req.body.password;
-  const name = req.body.name;
+module.exports = {
+  register: (req, res) => {
+    const hashedPassword = bcrypt.hashSync(req.body.password, 8);
 
-  bcrypt
-      .hash(password, 12)
-      .then((hashedPassword) => {
-        const user = new User({
-          email: email,
-          name: name,
+    User.create(
+        {
+          name: req.body.name,
+          email: req.body.email,
           password: hashedPassword,
-        });
-        return user.save();
-      })
-      .then((result) => {
-        res.status(201).json({
-          message: 'User created',
-          userId: result._id,
-        });
-      })
-      .catch((err) => {
-        err.statusCode = err.statusCode || 500;
-        next(err);
+        },
+        (err, user) => {
+          if (err) {
+            console.log(err);
+            return res
+                .status(500)
+                .send('There was a problem registering the user');
+          }
+
+          // if user is registered without errors
+          // create a token
+          const token = jwt.sign({id: user._id}, config.secret, {
+            expiresIn: 86400, // expires in 24 hours
+          });
+
+          res.status(200).send({auth: true, token: token});
+        },
+    );
+  },
+  login: (req, res) => {
+    User.findOne({email: req.body.email}, function(err, user) {
+      if (err) return res.status(500).send('Error on the server.');
+      if (!user) return res.status(404).send('No user found.');
+
+      // check if the password is valid
+      const passwordIsValid = bcrypt.compareSync(
+          req.body.password,
+          user.password,
+      );
+      if (!passwordIsValid) {
+        return res.status(401).send({auth: false, token: null});
+      }
+
+      // if user is found and password is valid
+      // create a token
+      const token = jwt.sign({id: user._id}, config.secret, {
+        expiresIn: 86400, // expires in 24 hours
       });
-};
 
-module.exports.login = (req, res, next) => {
-  const email = req.body.email;
-  const password = req.body.password;
-  let loadedUser;
-
-  User.findOne({email: email})
-      .then((user) => {
-        if (!user) {
-          const error = new Error('A user with this email was not found');
-          error.statusCode = 401;
-          throw error;
-        }
-        loadedUser = user;
-        return bcrypt.compare(password, user.password);
-      })
-      .then((result) => {
-        if (!result) {
-          const error = new Error('Wrong password');
-          error.statusCode = 401;
-          throw error;
-        }
-        const token = jwt.sign(
-            {email: loadedUser.email, userId: loadedUser._id.toString()},
-            keys,
-            {expiresIn: '1h'},
-        );
-
-        res.status(200).json({
-          token: token,
-          userId: loadedUser._id.toString(),
-        });
-      })
-      .catch((err) => {
-        err.statusCode = err.statusCode || 500;
-        next(err);
-      });
+      // return the information including token as JSON
+      res.status(200).send({auth: true, token: token});
+    });
+  },
+  me: (req, res) => {
+    User.findById(req.userId, {password: 0}, function(err, user) {
+      if (err) {
+        return res.status(500).send('There was a problem finding the user.');
+      }
+      if (!user) return res.status(404).send('No user found.');
+      res.status(200).send(user);
+    });
+  },
 };

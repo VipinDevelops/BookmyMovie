@@ -1,35 +1,35 @@
 const express = require('express');
 const bodyparser = require('body-parser');
-const MovieRoutes = require('./routes/movie.routes');
+const movieRoutes = require('./routes/movie.routes');
+const userRoutes = require('./routes/user.routes');
 const errorController = require('./controllers/errors.controlller');
+const cors = require('cors');
+const PORT = process.env.PORT;
+const app = express();
 
 // Database
-require('./config/db');
-
-// ENV
-require('dotenv').config();
-const PORT = process.env.PORT;
-
-// initializing express app
-const app = express();
+require('./config/db').connect();
 
 // handle JSON req and response
 app.use(express.json());
 
 // solve cors error
-const cors = require('cors');
 app.use(cors());
 
 // parsing request body's
 app.use(bodyparser.urlencoded({extended: false}));
-
-app.use('/movie', MovieRoutes);
 
 // default response by server
 app.use('/', (req, res) => {
   res.send('Welcome to my REST API ');
   console.log('API is UP and Working ');
 });
+
+// importing user
+app.use('/user', userRoutes);
+
+// Movie Routes
+app.use('/movie', movieRoutes);
 
 // Error handler
 app.use(errorController.get404);

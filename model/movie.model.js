@@ -34,10 +34,6 @@ const movieSchema = Schema({
     required: true,
     type: String,
   },
-  booked: {
-    required: false,
-    type: Boolean,
-  },
 });
 
 const movie = mongoose.model('movie', movieSchema);

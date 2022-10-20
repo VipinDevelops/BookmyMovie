@@ -22,9 +22,9 @@ const movieSchema = Schema({
     required: true,
     type: String,
   },
-  actor: {
+  actors: {
     required: false,
-    type: String,
+    type: Array,
   },
   language: {
     required: true,

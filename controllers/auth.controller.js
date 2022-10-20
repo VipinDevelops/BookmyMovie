@@ -1,7 +1,9 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../model/user.model');
-const config = require('../config/config'); // get config file
+
+require('dotenv').config();
+const secret = process.env.SECRET;
 
 module.exports = {
   register: (req, res) => {
@@ -23,7 +25,7 @@ module.exports = {
 
           // if user is registered without errors
           // create a token
-          const token = jwt.sign({id: user._id}, config.secret, {
+          const token = jwt.sign({id: user._id}, secret, {
             expiresIn: 86400, // expires in 24 hours
           });
 
@@ -47,7 +49,7 @@ module.exports = {
 
       // if user is found and password is valid
       // create a token
-      const token = jwt.sign({id: user._id}, config.secret, {
+      const token = jwt.sign({id: user._id}, secret, {
         expiresIn: 86400, // expires in 24 hours
       });
 

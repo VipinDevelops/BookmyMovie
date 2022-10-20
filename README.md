@@ -18,13 +18,13 @@ CRUD based RESTful API backend for booking movies
 `HTTPS`
 
 ```bash
-git clone https://github.com/Ak-Shaw/task-manager-nodejs.git
+git clone https://github.com/imvipin4/BookmyMovie.git
 ```
 
 `SSH`
 
 ```bash
-git clone git@github.com:Ak-Shaw/task-manager-nodejs.git
+git clone git@github.com:imvipin4/BookmyMovie.git
 ```
 
 `dependencies`

@@ -54,7 +54,18 @@ module.exports ={
                 const movie = await Movie.findById(req.params.id);
                 movie.booked = true;
                 await movie.save();
-                res.status(200).send(movie)
+                res.send(movie)
+            }catch(error){
+                res.status(400).json({message:error.message})
+                
+            }
+        },
+        Cancelmovie:async(req,res)=>{
+            try{
+                const movie = await Movie.findById(req.params.id);
+                movie.booked = false;
+                await movie.save();
+                res.send(movie)
             }catch(error){
                 res.status(400).json({message:error.message})
                 

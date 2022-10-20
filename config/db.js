@@ -13,6 +13,6 @@ exports.connect = () => {
         console.log('Successfully connected to Database ');
       })
       .catch((error) => {
-        console.log(`Can not connect to Database, ${error}`);
+        console.log(`Unable to connect to Database,${error}`);
       });
 };

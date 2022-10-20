@@ -20,16 +20,6 @@ router.patch(
     movieController.UpdateMovie,
 );
 
-// Update Movie to booked by ID
-router.patch('/book/:id', middleware.verifyToken, movieController.Bookmovie);
-
-// Update Movie to booked by ID
-router.patch(
-    '/cancel/:id',
-    middleware.verifyToken,
-    movieController.Cancelmovie,
-);
-
 // Delete by ID
 router.delete(
     '/delete/:id',

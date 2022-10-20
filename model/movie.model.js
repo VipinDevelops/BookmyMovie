@@ -12,6 +12,7 @@ const Schema = mongoose.Schema;
    * @param {String} dateRelease - The dateRelease of the moive.
    * @param {boolean} booked - Whether the moive is booked or not.
  */
+
 const movieSchema = Schema({
     name:{
         required:true,

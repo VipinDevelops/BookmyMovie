@@ -5,22 +5,25 @@ const router = express.Router();
 const {mongoose} = require('../database/db');
 const movieController = require('../controllers/movie.controller')
 
-//Post Method 
+//Post  
 router.post('/post', movieController.PostMovie)
 
-//Get all Method 
+//Get all  
 router.get('/getall', movieController.GetAllMovie)
 
-//Get One Method 
+//Get One  
 router.get('/getone/:id',movieController.GetOneMovie)
 
-//Update by ID Method 
+//Update by ID  
 router.patch('/update/:id',movieController.UpdateMovie)
 
-//Update Movie to booked by ID method 
+//Update Movie to booked by ID 
 router.patch('/book/:id',movieController.Bookmovie)
 
-//Delete by ID Method 
+//Update Movie to booked by ID 
+router.patch('/book/:id',movieController.Cancelmovie)
+
+//Delete by ID  
 router.delete('/delete/:id',movieController.DeleteMovie)
 
 module.exports = router;

@@ -2,7 +2,7 @@ const express  = require('express');
 const Movie =require('../model/movie.model')
 const router = express.Router();
 
-const {mongoose} = require('../database/db');
+const {mongoose} = require('../config/db');
 const movieController = require('../controllers/movie.controller')
 
 //Post  
@@ -21,7 +21,7 @@ router.patch('/update/:id',movieController.UpdateMovie)
 router.patch('/book/:id',movieController.Bookmovie)
 
 //Update Movie to booked by ID 
-router.patch('/book/:id',movieController.Cancelmovie)
+router.patch('/cancel/:id',movieController.Cancelmovie)
 
 //Delete by ID  
 router.delete('/delete/:id',movieController.DeleteMovie)

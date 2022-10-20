@@ -4,7 +4,7 @@ const MovieRoutes  = require('./routes/movie.routes')
 const errorController = require('./controllers/errors.controlller')
 
 //Database 
-require('./database/db');
+require('./config/db');
 
 //ENV
 require('dotenv').config()

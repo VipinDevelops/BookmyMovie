@@ -19,7 +19,11 @@
   },
   "homepage": "https://github.com/itsvipindev/BookmyMovie#readme",
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "eslint": "^8.25.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.7.1"
   },
   "dependencies": {
     "body-parser": "^1.20.1",

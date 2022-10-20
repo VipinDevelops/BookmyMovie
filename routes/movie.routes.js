@@ -1,29 +1,31 @@
-const express  = require('express');
-const Movie =require('../model/movie.model')
+const express = require('express');
+
+// eslint-disable-next-line new-cap
 const router = express.Router();
 
+// eslint-disable-next-line no-unused-vars
 const {mongoose} = require('../config/db');
-const movieController = require('../controllers/movie.controller')
+const movieController = require('../controllers/movie.controller');
 
-//Post  
-router.post('/post', movieController.PostMovie)
+// Post
+router.post('/post', movieController.PostMovie);
 
-//Get all  
-router.get('/getall', movieController.GetAllMovie)
+// Get all
+router.get('/getall', movieController.GetAllMovie);
 
-//Get One  
-router.get('/getone/:id',movieController.GetOneMovie)
+// Get One
+router.get('/getone/:id', movieController.GetOneMovie);
 
-//Update by ID  
-router.patch('/update/:id',movieController.UpdateMovie)
+// Update by ID
+router.patch('/update/:id', movieController.UpdateMovie);
 
-//Update Movie to booked by ID 
-router.patch('/book/:id',movieController.Bookmovie)
+// Update Movie to booked by ID
+router.patch('/book/:id', movieController.Bookmovie);
 
-//Update Movie to booked by ID 
-router.patch('/cancel/:id',movieController.Cancelmovie)
+// Update Movie to booked by ID
+router.patch('/cancel/:id', movieController.Cancelmovie);
 
-//Delete by ID  
-router.delete('/delete/:id',movieController.DeleteMovie)
+// Delete by ID
+router.delete('/delete/:id', movieController.DeleteMovie);
 
 module.exports = router;

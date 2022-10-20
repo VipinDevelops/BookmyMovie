@@ -19,12 +19,6 @@ app.use(cors());
 // parsing request body's
 app.use(bodyparser.urlencoded({extended: false}));
 
-// default response by server
-// app.use('/', (req, res) => {
-//   res.send('Welcome to my REST API ');
-//   console.log('API is UP and Working ');
-// });
-
 app.use('/movie', movieRoutes);
 app.use('/auth', authRoutes);
 
@@ -34,5 +28,5 @@ app.use(errorController.get404);
 const PORT = process.env.PORT || 3000;
 // server start listening
 app.listen(PORT, () => {
-  console.log(`Server is now listening on PORT ${PORT} ..... `);
+  console.log(`Server is Actively listening on PORT ${PORT} ..... `);
 });

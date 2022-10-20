@@ -8,7 +8,6 @@ module.exports = {
       actors: req.body.actors,
       language: req.body.language,
       dateRelease: req.body.dateRelease,
-      booked: req.body.booked,
     });
     try {
       await movie.save();

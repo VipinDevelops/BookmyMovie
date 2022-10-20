@@ -6,7 +6,10 @@ module.exports ={
         const movie =  new Movie({
             name :req.body.name,
             genre :req.body.genre,
-            actor: req.body.actor
+            actor: req.body.actor,
+            language:req.body.language,
+            dateRelease : req.body.dateRelease,
+            booked : req.body.booked,
         })
         try {
             await movie.save();

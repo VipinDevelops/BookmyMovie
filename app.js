@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyparser = require('body-parser');
 const movieRoutes = require('./routes/movie.routes');
-const userRoutes = require('./routes/user.routes');
+const authRoutes = require('./routes/auth.routes');
 const errorController = require('./controllers/errors.controlller');
 const cors = require('cors');
 const PORT = process.env.PORT;
@@ -20,13 +20,13 @@ app.use(cors());
 app.use(bodyparser.urlencoded({extended: false}));
 
 // default response by server
-app.use('/', (req, res) => {
-  res.send('Welcome to my REST API ');
-  console.log('API is UP and Working ');
-});
+// app.use('/', (req, res) => {
+//   res.send('Welcome to my REST API ');
+//   console.log('API is UP and Working ');
+// });
 
 // importing user
-app.use('/user', userRoutes);
+app.use('/', authRoutes);
 
 // Movie Routes
 app.use('/movie', movieRoutes);

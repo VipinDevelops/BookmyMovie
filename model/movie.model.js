@@ -13,8 +13,20 @@ const movieSchema = Schema({
     actor:{
         required:false,
         type:String
+    },
+    language:{
+        required:true,
+        type:String
+    },
+    dateRelease:{
+        required:true,
+        type:String
+    },
+    booked:{
+        required:true,
+        type:Boolean
     }
-    //imageurl , actor
+
 })
 
 const movie =mongoose.model('movie',movieSchema);

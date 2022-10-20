@@ -17,6 +17,9 @@ router.get('/getone/:id',movieController.GetOneMovie)
 //Update by ID Method 
 router.patch('/update/:id',movieController.UpdateMovie)
 
+//Update Movie to booked by ID method 
+router.patch('/book/:id',movieController.Bookmovie)
+
 //Delete by ID Method 
 router.delete('/delete/:id',movieController.DeleteMovie)
 

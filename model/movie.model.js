@@ -23,7 +23,7 @@ const movieSchema = Schema({
         type:String
     },
     booked:{
-        required:true,
+        required:false,
         type:Boolean
     }
 

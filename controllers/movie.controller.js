@@ -49,6 +49,18 @@ module.exports ={
             }
         },
 
+        Bookmovie:async(req,res)=>{
+            try{
+                const movie = await Movie.findById(req.params.id);
+                movie.booked = true;
+                await movie.save();
+                res.status(200).send(movie)
+            }catch(error){
+                res.status(400).json({message:error.message})
+                
+            }
+        },
+
         DeleteMovie:async(req,res)=>{
             try {
                 const id = req.params.id;

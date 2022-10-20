@@ -1,5 +1,7 @@
 const jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
-const config = require('../config/config'); // get our config file
+
+require('dotenv').config();
+const secret = process.env.SECRET;
 
 module.exports = {
   verifyToken: (req, res, next) => {
@@ -12,7 +14,7 @@ module.exports = {
     }
 
     // verifies secret and checks exp
-    jwt.verify(token, config.secret, function(err, decoded) {
+    jwt.verify(token, secret, function(err, decoded) {
       if (err) {
         return res
             .status(500)

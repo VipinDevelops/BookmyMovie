@@ -19,13 +19,13 @@ app.use(cors());
 // parsing request body's
 app.use(bodyparser.urlencoded({extended: false}));
 
+app.use('/movie', verifyToken, movieRoutes);
+app.use('/auth', authRoutes);
+
 // default response by server
 app.use('/', (req, res) => {
   res.send('Welcome to my REST API 🙌');
 });
-
-app.use('/movie', verifyToken, movieRoutes);
-app.use('/auth', authRoutes);
 
 // Error handler
 app.use(errorController.get404);

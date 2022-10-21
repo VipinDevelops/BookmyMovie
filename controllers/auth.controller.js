@@ -8,7 +8,6 @@ const secret = process.env.SECRET;
 module.exports = {
   register: (req, res) => {
     const hashedPassword = bcrypt.hashSync(req.body.password, 8);
-
     User.create(
         {
           name: req.body.name,

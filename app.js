@@ -5,6 +5,7 @@ const authRoutes = require('./routes/auth.routes');
 const errorController = require('./controllers/errors.controlller');
 const cors = require('cors');
 const app = express();
+const {verifyToken} = require('./middlewares/VerifyToken');
 
 // Database
 require('./config/db').connect();
@@ -18,7 +19,7 @@ app.use(cors());
 // parsing request body's
 app.use(bodyparser.urlencoded({extended: false}));
 
-app.use('/movie', movieRoutes);
+app.use('/movie', verifyToken, movieRoutes);
 app.use('/auth', authRoutes);
 
 // Error handler

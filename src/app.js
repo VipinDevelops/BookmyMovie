@@ -23,7 +23,7 @@ app.use('/movie', verifyToken, movieRoutes);
 app.use('/auth', authRoutes);
 
 // default response by server
-app.use('/', (req, res) => {
+app.post('/welcome', verifyToken, (req, res) => {
   res.send('Welcome to my REST API 🙌');
 });
 

@@ -208,13 +208,13 @@ npm run dev
 `DELETE` `/movie/delete/6352b41219a8375ba570d92e`
 
 **Sample Response Body:**
-```json
+```
 Dead Pool Movie has been deleted
 ```
 `POST` `/welcome`
 
 **Sample Response Body:**
-```json
+```
 Welcome to my REST API 🙌
 ```
 

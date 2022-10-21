@@ -2,20 +2,22 @@ const express = require('express');
 
 // eslint-disable-next-line new-cap
 const router = express.Router();
+
 const movieController = require('../controllers/movie.controller');
-// Post
+
+// POST
 router.post('/post', movieController.PostMovie);
 
-// Get all
+// GET
 router.get('/getall', movieController.GetAllMovie);
 
-// Get One
+// GET
 router.get('/getone/:id', movieController.GetOneMovie);
 
-// Update by ID
+// PATCH
 router.patch('/update/:id', movieController.UpdateMovie);
 
-// Delete by ID
+// DELETE
 router.delete('/delete/:id', movieController.DeleteMovie);
 
 module.exports = router;

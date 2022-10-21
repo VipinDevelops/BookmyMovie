@@ -1,28 +1,24 @@
 const express = require('express');
+const cors = require('cors');
+const {verifyToken} = require('./middlewares/VerifyToken');
 const bodyparser = require('body-parser');
 const movieRoutes = require('./routes/movie.routes');
 const authRoutes = require('./routes/auth.routes');
 const errorController = require('./controllers/errors.controlller');
-const cors = require('cors');
 const app = express();
-const {verifyToken} = require('./middlewares/VerifyToken');
+const PORT = process.env.PORT || 3000;
 
 // Database
 require('./config/db').connect();
 
-// handle JSON req and response
+// USE
 app.use(express.json());
-
-// solve cors error
 app.use(cors());
-
-// parsing request body's
 app.use(bodyparser.urlencoded({extended: false}));
-
 app.use('/movie', verifyToken, movieRoutes);
 app.use('/auth', authRoutes);
 
-// default response by server
+// POST
 app.post('/welcome', verifyToken, (req, res) => {
   res.send('Welcome to my REST API 🙌');
 });
@@ -30,8 +26,6 @@ app.post('/welcome', verifyToken, (req, res) => {
 // Error handler
 app.use(errorController.get404);
 
-const PORT = process.env.PORT || 3000;
-// server start listening
 app.listen(PORT, () => {
-  console.log(`Server is started on http://localhost:${PORT}/  `);
+  console.log(`Application is Running on http://localhost:${PORT}/  `);
 });

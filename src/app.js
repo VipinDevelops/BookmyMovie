@@ -28,5 +28,5 @@ app.use(errorController.get404);
 const PORT = process.env.PORT || 3000;
 // server start listening
 app.listen(PORT, () => {
-  console.log(`Server is Actively listening on PORT ${PORT} ..... `);
+  console.log(`Server is started on http://localhost:${PORT}/  `);
 });

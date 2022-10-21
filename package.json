@@ -4,8 +4,8 @@
   "description": "RESTful API clone of BookmyShow which use nodeJS ,express and MongoDB",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon app.js",
-    "start": " node app.js"
+    "dev": "nodemon src/app.js",
+    "start": " node src/app.js"
   },
   "repository": {
     "type": "git",

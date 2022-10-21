@@ -124,6 +124,7 @@ npm run dev
 }
   ```
 `GET` `/movie/getall`
+
  **Sample Response Body:**
   ```json
   [

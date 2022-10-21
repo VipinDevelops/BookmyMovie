@@ -1,4 +1,4 @@
-const Movie = require('../model/movie.model');
+const Movie = require('../src/model/movie.model');
 
 module.exports = {
   PostMovie: async (req, res) => {

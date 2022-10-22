@@ -5,7 +5,10 @@
 # BookmyMovie
 CRUD based RESTful API backend for booking movies with JWT authentication.
 
-
+## Access direclty from API here 
+```
+https://book-my-movie-api.herokuapp.com
+```
 ### Pre-setup dependencies
 
 - Git

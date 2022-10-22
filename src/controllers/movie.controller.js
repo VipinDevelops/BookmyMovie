@@ -5,6 +5,7 @@ module.exports = {
     const movie = new Movie({
       name: req.body.name,
       genre: req.body.genre,
+      imageUrl: req.body.imageUrl,
       actors: req.body.actors,
       language: req.body.language,
       dateRelease: req.body.dateRelease,

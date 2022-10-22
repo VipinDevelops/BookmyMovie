@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 /**
  * Represents a Movie JSON
  * @constructor
+ * @param {_id} _id - The Id of the moive.
  * @param {name} name - The name of the moive.
  * @param {string} genre - The genre of the moive.
  * @param {string} imageUrl - The imageUrl of the moive.
@@ -14,6 +15,10 @@ const Schema = mongoose.Schema;
 
 // eslint-disable-next-line new-cap
 const movieSchema = Schema({
+  _id: {
+    type: Schema.Types.ObjectId,
+    required: true,
+  },
   name: {
     required: true,
     type: String,

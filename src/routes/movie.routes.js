@@ -12,12 +12,12 @@ router.post('/post', movieController.PostMovie);
 router.get('/getall', movieController.GetAllMovie);
 
 // GET
-router.get('/getone/:id', movieController.GetOneMovie);
+router.get('/getone/:_id', movieController.GetOneMovie);
 
 // PATCH
-router.patch('/update/:id', movieController.UpdateMovie);
+router.patch('/update/:_id', movieController.UpdateMovie);
 
 // DELETE
-router.delete('/delete/:id', movieController.DeleteMovie);
+router.delete('/delete/:_id', movieController.DeleteMovie);
 
 module.exports = router;

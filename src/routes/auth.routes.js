@@ -1,5 +1,5 @@
 const express = require('express');
-const middleware = require('../middlewares/VerifyToken');
+const middleware = require('../middleware/VerifyToken');
 const authController = require('../controllers/auth.controller');
 
 // eslint-disable-next-line new-cap

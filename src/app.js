@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const {verifyToken} = require('./middlewares/VerifyToken');
+const {verifyToken} = require('./middleware/VerifyToken');
 const bodyparser = require('body-parser');
 const movieRoutes = require('./routes/movie.routes');
 const authRoutes = require('./routes/auth.routes');

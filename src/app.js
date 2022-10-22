@@ -1,20 +1,38 @@
 const express = require('express');
-const cors = require('cors');
 const {verifyToken} = require('./middleware/VerifyToken');
 const bodyparser = require('body-parser');
 const movieRoutes = require('./routes/movie.routes');
 const authRoutes = require('./routes/auth.routes');
 const errorController = require('./controllers/errors.controlller');
+
+// App
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Security
+const helmet = require('helmet');
+const cors = require('cors');
+const xss = require('xss-clean');
+const rateLimiter = require('express-rate-limit');
 
 // Database
 require('./config/db').connect();
 
-// USE
+// MIDDLEWARE
+app.set('trust proxy', 1);
+app.use(
+    rateLimiter({
+      windowMs: 15 * 60 * 1000, // 15 minutes
+      max: 1000, // limit each IP to 100 request per windowMs
+    }),
+);
 app.use(express.json());
+app.use(helmet());
 app.use(cors());
+app.use(xss());
 app.use(bodyparser.urlencoded({extended: false}));
+
+// ROUTES
 app.use('/movie', verifyToken, movieRoutes);
 app.use('/auth', authRoutes);
 

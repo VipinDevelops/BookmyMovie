@@ -18,10 +18,12 @@ const movieSchema = Schema({
   name: {
     required: true,
     type: String,
+    maxlength: 50,
   },
   genre: {
     required: true,
     type: String,
+    maxlength: 20,
   },
   imageUrl: {
     required: false,

@@ -21,6 +21,10 @@ const movieSchema = Schema({
     required: true,
     type: String,
   },
+  imageUrl: {
+    required: false,
+    type: String,
+  },
   actors: {
     required: false,
     type: Array,

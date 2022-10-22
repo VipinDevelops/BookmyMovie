@@ -25,7 +25,7 @@ module.exports = {
           // if user is registered without errors
           // create a token
           const token = jwt.sign({id: user._id}, secret, {
-            expiresIn: 86400, // expires in 24 hours
+            expiresIn: '30d', // expires in 30d
           });
 
           res.status(200).send({auth: true, token: token});

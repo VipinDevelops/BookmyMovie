@@ -3,7 +3,6 @@ const Movie = require('../model/movie.model');
 module.exports = {
   PostMovie: async (req, res) => {
     const movie = new Movie({
-      _id: req.body._id,
       name: req.body.name,
       genre: req.body.genre,
       imageUrl: req.body.imageUrl,
@@ -30,7 +29,7 @@ module.exports = {
 
   GetOneMovie: async (req, res) => {
     try {
-      const movie = await Movie.findById(req.params._id);
+      const movie = await Movie.findById(req.params.id);
       res.json(movie);
     } catch (error) {
       res.status(500).json({message: error.message});
@@ -39,11 +38,11 @@ module.exports = {
 
   UpdateMovie: async (req, res) => {
     try {
-      const _id = req.params._id;
+      const id = req.params.id;
       const update = req.body;
       const Updateoption = {new: true};
       const updatemovie = await Movie.findByIdAndUpdate(
-          _id,
+          id,
           update,
           Updateoption,
       );
@@ -55,8 +54,8 @@ module.exports = {
 
   DeleteMovie: async (req, res) => {
     try {
-      const _id = req.params._id;
-      const DeletedMoive = await Movie.findByIdAndDelete(_id);
+      const id = req.params.id;
+      const DeletedMoive = await Movie.findByIdAndDelete(id);
       res.send(` ${DeletedMoive.name} Movie has been deleted`);
     } catch (error) {
       res.status(400).json({message: error.message});

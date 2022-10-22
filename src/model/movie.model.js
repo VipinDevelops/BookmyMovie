@@ -15,10 +15,6 @@ const Schema = mongoose.Schema;
 
 // eslint-disable-next-line new-cap
 const movieSchema = Schema({
-  _id: {
-    type: Schema.Types.ObjectId,
-    required: true,
-  },
   name: {
     required: true,
     type: String,

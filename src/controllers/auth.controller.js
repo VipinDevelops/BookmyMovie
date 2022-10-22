@@ -24,7 +24,7 @@ module.exports = {
 
           // if user is registered without errors
           // create a token
-          const token = jwt.sign({id: user._id}, secret, {
+          const token = jwt.sign({id: user.id}, secret, {
             expiresIn: '30d', // expires in 30d
           });
 
@@ -48,7 +48,7 @@ module.exports = {
 
       // if user is found and password is valid
       // create a token
-      const token = jwt.sign({id: user._id}, secret, {
+      const token = jwt.sign({id: user.id}, secret, {
         expiresIn: 86400, // expires in 24 hours
       });
 

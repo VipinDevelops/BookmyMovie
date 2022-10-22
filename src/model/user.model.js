@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-import {isEmail} from 'validator';
 
 /**
  * Represents a User JSON
@@ -17,7 +16,6 @@ const userSchema = new Schema({
   email: {
     type: String,
     required: true,
-    validate: [isEmail, 'invalid Email'],
   },
   password: {
     type: String,

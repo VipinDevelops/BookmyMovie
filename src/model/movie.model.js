@@ -6,6 +6,7 @@ const Schema = mongoose.Schema;
  * @constructor
  * @param {name} name - The name of the moive.
  * @param {string} genre - The genre of the moive.
+ * @param {string} imageUrl - The imageUrl of the moive.
  * @param {Array} actors - The actor in the moive.
  * @param {string} language - The language of the moive.
  * @param {String} dateRelease - The dateRelease of the moive.

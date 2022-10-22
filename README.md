@@ -3,7 +3,7 @@
 </p>
 
 # BookmyMovie
-CRUD based RESTful API backend for booking movies
+CRUD based RESTful API backend for booking movies with JWT authentication.
 
 
 ### Pre-setup dependencies
@@ -32,14 +32,17 @@ git clone git@github.com:imvipin4/BookmyMovie.git
 ```bash
 npm install
 ```
-#### Project Setup
+### Project Setup
 
 In order to spin up the project, in the root rename .env.example file to  .env with these 3 variables, with your own values.
 
+```
 DATABASE
-PORT
-SECRET
 
+PORT
+
+SECRET
+```
 
 ### Usage
 
